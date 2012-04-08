@@ -39,7 +39,7 @@ module ActionView
       # You can change the behaviour with various options, see
       # http://script.aculo.us for more documentation.
       def visual_effect(name, element_id = false, js_options = {})
-        element = element_id ? ActiveSupport::JSON.encode(element_id) : "element"
+        element = element_id ? "'#{element}'" : "element"
 
         js_options[:queue] = if js_options[:queue].is_a?(Hash)
           '{' + js_options[:queue].map {|k, v| k == :limit ? "#{k}:#{v}" : "#{k}:'#{v}'" }.join(',') + '}'
